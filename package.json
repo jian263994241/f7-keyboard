@@ -1,0 +1,24 @@
+{
+  "name": "f7-keyboard",
+  "version": "1.0.0",
+  "description": "framework7 react keyboard",
+  "main": "index.js",
+  "dependencies": {
+    "f7-modal": "^0.2.5",
+    "prop-types": "^15.6.0",
+    "react": "^16.0.0",
+    "react-dom": "^16.0.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "f7",
+    "framework7",
+    "keyboard",
+    "react"
+  ],
+  "author": "jianli",
+  "license": "ISC"
+}
