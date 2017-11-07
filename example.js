@@ -27,7 +27,7 @@ class Example extends Component {
 
   switchTheme = ()=>{
     this.setState({
-      dark: true
+      dark: !this.state.dark
     });
   }
 
