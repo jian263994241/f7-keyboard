@@ -1,16 +1,14 @@
-import React, {Component} from 'react';
-import {findDOMNode} from 'react-dom';
+import React, {Component, cloneElement} from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
-import {PickerModal} from 'f7-modal';
-import styles from './enpad.less';
+import styles from './style.less';
 
 import {backspace, shift, shift2} from './svgicon';
 
 export default class Qwert extends Component {
 
   static defaultProps = {
-    value : ''
+    value : '',
+    dark: false
   }
 
   state = {
@@ -24,8 +22,9 @@ export default class Qwert extends Component {
     const renderSpecialkey = this.renderSpecialkey;
     const pads = this.pads = {};
 
+
     pads['lowerCase'] = (
-      <ul className={styles['iphone-keyboard']}>
+      <ul>
         <li>
           {renderKeys('qwertyuiop')}
         </li>
@@ -39,14 +38,14 @@ export default class Qwert extends Component {
         </li>
         <li>
           {renderSpecialkey('numbers', '.?123', this.switchPad('numbers'))}
-          {renderSpecialkey('space', '空 格', this.keypress('main', ' '))}
-          {renderSpecialkey('return', '完 成', this.done)}
+          {renderSpecialkey('space', '空格', this.keypress('main', ' '))}
+          {renderSpecialkey('return', '完成', this.done)}
         </li>
       </ul>
     );
 
     pads['upperCase'] = (
-      <ul className={styles['iphone-keyboard']}>
+      <ul>
         <li>
           {renderKeys('QWERTYUIOP')}
         </li>
@@ -60,14 +59,14 @@ export default class Qwert extends Component {
         </li>
         <li>
           {renderSpecialkey('numbers', '.?123', this.switchPad('numbers'))}
-          {renderSpecialkey('space', '空 格', this.keypress('main', ' '))}
-          {renderSpecialkey('return', '完 成', this.done)}
+          {renderSpecialkey('space', '空格', this.keypress('main', ' '))}
+          {renderSpecialkey('return', '完成', this.done)}
         </li>
       </ul>
     );
 
     pads['numbers'] = (
-      <ul className={styles['iphone-keyboard']}>
+      <ul>
         <li>
           {renderKeys('1234567890')}
         </li>
@@ -81,14 +80,14 @@ export default class Qwert extends Component {
         </li>
         <li>
           {renderSpecialkey('numbers', 'ABC', this.switchPad('lowerCase'))}
-          {renderSpecialkey('space', '空 格', this.keypress('main', ' '))}
-          {renderSpecialkey('return', '完 成', this.done)}
+          {renderSpecialkey('space', '空格', this.keypress('main', ' '))}
+          {renderSpecialkey('return', '完成', this.done)}
         </li>
       </ul>
     );
 
     pads['symbol'] = (
-      <ul className={styles['iphone-keyboard']}>
+      <ul>
         <li>
           {renderKeys('[]{}#%^*+=')}
         </li>
@@ -102,8 +101,8 @@ export default class Qwert extends Component {
         </li>
         <li>
           {renderSpecialkey('numbers', 'ABC', this.switchPad('lowerCase'))}
-          {renderSpecialkey('space', '空 格', this.keypress('main', ' '))}
-          {renderSpecialkey('return', '完 成', this.done)}
+          {renderSpecialkey('space', '空格', this.keypress('main', ' '))}
+          {renderSpecialkey('return', '完成', this.done)}
         </li>
       </ul>
     );
@@ -114,7 +113,7 @@ export default class Qwert extends Component {
   ));
 
   renderSpecialkey = (keys, name, click) => (
-    <button className={classnames(styles['specialkey'], styles[keys])} onClick={click}>{name}</button>
+    <button className={`${styles['specialkey']} ${styles[keys]}`} onClick={click}>{name}</button>
   );
 
   del = (value)=>{
@@ -122,6 +121,8 @@ export default class Qwert extends Component {
   }
 
   add = (value, key)=>{
+    const {maxLength} = this.props;
+    if(maxLength && value.length >= maxLength) { return value; }
     return value + key;
   }
 
@@ -140,11 +141,17 @@ export default class Qwert extends Component {
         onChange && onChange(this.add(value, key));
         break;
       default:
-
     }
   }
 
   switchPad = (id)=> () => this.setState({padId: id});
+
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextProps.dark != this.props.dark || nextState.padId != this.state.padId){
+      return true;
+    }
+    return false;
+  }
 
   render() {
 
@@ -152,7 +159,10 @@ export default class Qwert extends Component {
       <div className={styles['bar']}>安全键盘</div>
     );
 
-    return this.pads[this.state.padId];
+    const dark = this.props.dark;
+    const css = `${styles['iphone-keyboard']} ${styles['enpad']} ${dark? styles['theme-dark']: ''}`;
+
+    return cloneElement(this.pads[this.state.padId], {className:  css});
 
   }
 }

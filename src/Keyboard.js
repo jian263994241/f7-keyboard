@@ -33,9 +33,9 @@ export default class Keyboard extends Component {
     });
   }
 
-  getInput = (currentId)=>{
-    const {inputs} = this.props;
-    const currentInput = document.getElementById(currentId);
+  getInput = (input)=>{
+    const currentInput = document.getElementById(input);
+
     if(currentInput){
       currentInput.readOnly = true;
       document.activeElement.blur();
@@ -49,15 +49,15 @@ export default class Keyboard extends Component {
 
 
   componentDidMount() {
-    this.getInput(this.props.currentId);
+    this.getInput(this.props.input);
     if(!this.props.inline){
       document.addEventListener('click', this.cancelIgnore, false);
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    if(nextProps.currentId != this.props.currentId){
-      this.getInput(nextProps.currentId)
+    if(nextProps.input != this.props.input){
+      this.getInput(nextProps.input)
     }
   }
 
@@ -105,19 +105,49 @@ export default class Keyboard extends Component {
   render() {
 
     const {
-      currentId,
+      input,
       children,
-      inputs,
+      inline,
       value,
+      dark,
+      extraKey,
+      random,
       number,
+      maxLength,
       style,
       ...rest
     } = this.props;
 
     const setValue = (a)=>{
       this.setState({ value: a });
-      this.input.value = a;
-      this.input.scrollLeft = this.input.scrollWidth;
+      if(this.input){
+        this.input.value = a;
+        this.input.scrollLeft = this.input.scrollWidth;
+      }
+    }
+
+    const pad = number ? (
+      <Numpad
+        value={this.state.value}
+        onChange={setValue}
+        random={random}
+        maxLength={maxLength}
+        extraKey={extraKey}
+        dark={dark}
+      />
+    ) : (
+      <Enpad
+        value={this.state.value}
+        onChange={setValue}
+        maxLength={maxLength}
+        dark={dark}
+        />
+    );
+
+    if(inline){
+      return (
+        <div style={style} {...rest}>{pad}</div>
+      )
     }
 
     return (
@@ -128,18 +158,7 @@ export default class Keyboard extends Component {
         toolbar={null}
         {...rest}
         >
-        {
-          number ? (
-            <Numpad
-              value={this.state.value}
-              onChange={setValue}/>
-          ) : (
-            <Enpad
-              value={this.state.value}
-              onChange={setValue}/>
-          )
-        }
-
+        { pad }
       </PickerModal>
     )
   }

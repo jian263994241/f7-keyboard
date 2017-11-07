@@ -1,7 +1,8 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import styles from './numpad.less';
+import styles from './style.less';
+import {backspace, shift, shift2} from './svgicon';
 
 export default class Numpad extends Component {
 
@@ -9,19 +10,18 @@ export default class Numpad extends Component {
 
   static propTypes = {
     className: PropTypes.string,
-    dot: PropTypes.bool,
     onChange: PropTypes.func,
     random: PropTypes.bool,
-    idCard: PropTypes.bool,
+    dark: PropTypes.bool,
+    extraKey: PropTypes.any,
     maxLength: PropTypes.number,
-    value: PropTypes.oneOfType([
-      PropTypes.string.isRequired,
-      PropTypes.number.isRequired
-    ]).isRequired,
+    value: PropTypes.string.isRequired,
   }
 
   static defaultProps = {
-    closeButton: false
+    value : '',
+    extraKey: '00',
+    dark: false
   }
 
   getkeys = (extraKeys, random) =>{
@@ -37,46 +37,35 @@ export default class Numpad extends Component {
     return keys;
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    if(nextProps.dark != this.props.dark){
+      return true;
+    }
+    return false;
+  }
+
   renderKeys = (key) => {
-    const keyCss = classnames({
-      [styles['picker-keypad-button']]: true,
-      [styles['picker-keypad-dummy-button']]: key === null,
-      [styles['picker-keypad-delete']]: key === 'del'
-    });
+    let btn = key;
 
-    let result = null;
-
-    switch (key) {
-      case null:
-        break;
-      case 'close':
-        result = <div className={styles['picker-keypad-button-close']}></div>;
-        break;
-      case 'del':
-        result = ( <div className={styles['icon-keypad-delete']}></div> );
-        break;
-      default:
-        result = ( <div className={styles['picker-keypad-button-number']}>{key}</div> )
+    if(btn === 'del'){
+      btn = backspace;
     }
 
     const valueFormat = (value , key, maxLength)=>{
       let val = String(value);
       key = String(key);
 
-      if(key === 'del'){
-        return val.slice(0, val.length - 1);
-      }
+      if(key === 'del'){ return val.slice(0, val.length - 1); }
 
-      if(maxLength && val.length >= maxLength) {
-        return val;
-      }
+      if(maxLength && val.length >= maxLength) { return val; }
 
-      if(key === 'X'){
-        return val + key;
-      }
+      if(key === 'x'){ return val + key; }
 
-      if(key === '.' && val.indexOf('.') > -1){
-        return val;
+      if(key === '00' && val === ''){ return ''; }
+
+      if(key === '.'){
+        if(val.indexOf('.') > -1){ return val; }
+        if(val === ''){ return '0.'+ val; }
       }
 
       return val + key ;
@@ -86,8 +75,7 @@ export default class Numpad extends Component {
       const maxLength = this.props.maxLength;
       const onChange = this.props.onChange;
       const value = this.props.value;
-
-      if(typeof key === 'number' || key=== 'del' || key === '.' || key === 'X'){
+      if(typeof key === 'number' || typeof key === 'string' || key=== 'del' ){
         const val = valueFormat(value, key , maxLength);
         if(value != val){
           onChange && onChange(val);
@@ -98,22 +86,25 @@ export default class Numpad extends Component {
       }
     }
 
+    const specialkey = (key)=>{
+      if(key === 'del'){
+        return `${styles['specialkey']} ${styles['backspace']}`;
+      }
+      if(key === null){
+        return `${styles['specialkey']} ${styles['block']}`;
+      }
+      return '';
+    }
+
+
     return (
-      <div className={keyCss} key={key} onClick={keyChange}>{result}</div>
+      <button key={key} onClick={keyChange} className={specialkey(key)}>{btn}</button>
     );
   }
 
   componentWillMount() {
-    const {closeButton, random, dot, idCard} = this.props;
-    if(closeButton){
-      this.keys = this.getkeys(['close','del'], random);
-    }else if(dot){
-      this.keys = this.getkeys(['.', 'del'], random);
-    }else if(idCard) {
-      this.keys = this.getkeys(['X', 'del'], random);
-    }else{
-      this.keys = this.getkeys([null, 'del'], random);
-    }
+    const {random, extraKey} = this.props;
+    this.keys = this.getkeys([extraKey, 'del'], random);
   }
 
   render() {
@@ -121,37 +112,28 @@ export default class Numpad extends Component {
     const {
       children,
       className,
-      closeButton,
-      dot,
-      inline,
-      idCard,
+      dark,
+      extraKeys,
       maxLength,
       onChange,
       ...rest
     } = this.props;
 
+    const Li = ({keys})=>{
+      const result = [];
+      keys.forEach((k, i)=>{
+        if(i%3 === 0){ result.push(<li key={`${i},${i + 3}`}>{keys.slice(i, i + 3)}</li>); }
+      });
+      return result;
+    }
 
-    const cls = classnames({
-      [styles['picker-keypad']]: true,
-      [styles['picker-keypad-type-numpad']]: true,
-      [styles['picker-modal-inline']]: inline
-    }, className);
+    const css = `${styles['iphone-keyboard']} ${styles['numpad']} ${dark? styles['theme-dark']: ''}`;
 
     return (
-      <div className={styles['picker-keypad-buttons']} {...rest}>
-        {this.keys.map(this.renderKeys)}
-      </div>
+      <ul className={css}>
+        <Li keys={this.keys.map(this.renderKeys)}></Li>
+      </ul>
     );
 
-    // <PickerModal
-    //   className={cls}
-    //   innerCss={styles['picker-keypad-buttons']}
-    //   mounter={!inline}
-    //   visible={inline || visible}
-    //   overlay={false}
-    //   {...rest}
-    //   >
-    //   {this.keys.map(this.renderKeys)}
-    // </PickerModal>
   }
 }

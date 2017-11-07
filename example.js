@@ -2,7 +2,9 @@ import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {Keyboard, Enpad, Numpad} from './src';
 
-
+const style = {
+  padding: '10px 0'
+}
 
 class Example extends Component {
 
@@ -19,9 +21,25 @@ class Example extends Component {
 
   }
 
+  state = {
+    dark: false
+  }
+
+  switchTheme = ()=>{
+    this.setState({
+      dark: true
+    });
+  }
+
   render() {
     return (
+
+
       <div>
+
+        <div style={{paddingBottom: '10px'}}>
+          <a onClick={this.switchTheme} style={{padding: '8px', border:'1px solid red'}}>切换主题</a>
+        </div>
 
         <input
           type="text"
@@ -31,20 +49,29 @@ class Example extends Component {
           onClick={()=>this.setState({numpad: 'numInput'})}/>
 
       <br/>
-        <input
-          type="text"
-          id="numInput2"
-          placeholder="numpad2"
-          style={{border: '1px solid #000'}}
-          onClick={()=>this.setState({numpad: 'numInput2'})}/>
+
+
+          <br/>
+            <input
+              type="text"
+              id="numInput3"
+              placeholder="numpad2"
+              style={{border: '1px solid #000'}}
+              onClick={()=>this.setState({numpad3: 'numInput3'})}/>
 
         <Keyboard
-          currentId={this.state.numpad}
-          number={true}
+          dark={this.state.dark}
+          input={this.state.numpad}
+          number={false}
           onCancel={()=>this.setState({numpad: null})}
         />
 
-
+        <Keyboard
+          dark={this.state.dark}
+          input={this.state.numpad3}
+          extraKey={null}
+          onCancel={()=>this.setState({numpad3: null})}
+        />
       </div>
     );
   }
