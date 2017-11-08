@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import {render} from 'react-dom';
 import {Keyboard, Enpad, Numpad} from './src';
 
+// import {Keyboard, Enpad, Numpad}  from './dist';
+
 const style = {
   padding: '10px 0'
 }

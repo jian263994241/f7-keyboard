@@ -12,13 +12,16 @@
   },
   "devDependencies": {},
   "scripts": {
+    "start": "wp -s",
+    "build": "wp -f wp-conf-build.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
     "f7",
     "framework7",
     "keyboard",
-    "react"
+    "react",
+    "ios ui"
   ],
   "author": "jianli",
   "license": "ISC"

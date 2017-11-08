@@ -23,7 +23,7 @@ module.exports = {
       chunks: [ 'vendor', 'example']
     }),
     new webpack.optimize.CommonsChunkPlugin({
-      names: ['f7-modal', 'vendor'],
+      names: ['example', 'vendor'],
       // (给 chunk 一个不同的名字)
       minChunks: Infinity,
       // (随着 entry chunk 越来越多，

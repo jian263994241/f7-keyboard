@@ -1,9 +1,6 @@
 import React, {Component, createElement} from 'react';
 import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
-
-import Numpad from './numpad';
-import Enpad from './enpad';
 import Modal from './Modal';
 import styles from './style.less';
 
