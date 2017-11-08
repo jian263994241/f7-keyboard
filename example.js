@@ -22,7 +22,8 @@ class Example extends Component {
   }
 
   state = {
-    dark: false
+    dark: false,
+    keyboardid: ''
   }
 
   switchTheme = ()=>{
@@ -33,8 +34,6 @@ class Example extends Component {
 
   render() {
     return (
-
-
       <div>
 
         <div style={{paddingBottom: '10px'}}>
@@ -46,31 +45,31 @@ class Example extends Component {
           id="numInput"
           placeholder="numpad"
           style={{border: '1px solid #000'}}
-          onClick={()=>this.setState({numpad: 'numInput'})}/>
+          onClick={()=>this.setState({keyboardid: 'a'})}/>
 
-      <br/>
-
-
-          <br/>
-            <input
-              type="text"
-              id="numInput3"
-              placeholder="numpad2"
-              style={{border: '1px solid #000'}}
-              onClick={()=>this.setState({numpad3: 'numInput3'})}/>
+        <br/>
+          <input
+            type="text"
+            id="numInput3"
+            placeholder="numpad2"
+            style={{border: '1px solid #000'}}
+            onClick={()=>this.setState({keyboardid: 'b'})}/>
 
         <Keyboard
+          visible={this.state.keyboardid === 'a'}
           dark={this.state.dark}
-          input={this.state.numpad}
-          number={false}
-          onCancel={()=>this.setState({numpad: null})}
+          input="numInput"
+          keypad={Enpad}
+          onCancel={()=>this.setState({keyboardid: ''})}
         />
 
         <Keyboard
+          visible={this.state.keyboardid === 'b'}
           dark={this.state.dark}
-          input={this.state.numpad3}
+          input="numInput3"
           extraKey={null}
-          onCancel={()=>this.setState({numpad3: null})}
+          keypad={Numpad}
+          onCancel={()=>this.setState({keyboardid: ''})}
         />
       </div>
     );

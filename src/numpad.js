@@ -87,8 +87,9 @@ export default class Numpad extends Component {
     }
 
     const specialkey = (key)=>{
+
       if(key === 'del'){
-        return `${styles['specialkey']} ${styles['backspace']}`;
+        return `${styles['specialkey']} ${styles['backspace']} ` +  (this.props.extraKey === null ? styles['transparent'] : '');
       }
       if(key === null){
         return `${styles['specialkey']} ${styles['block']}`;

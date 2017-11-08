@@ -4,12 +4,14 @@ import styles from './style.less';
 
 import {backspace, shift, shift2} from './svgicon';
 
-export default class Qwert extends Component {
+export default class Enpad extends Component {
 
   static defaultProps = {
     value : '',
     dark: false
   }
+
+  static uiName = 'Enpad';
 
   state = {
     padId: 'lowerCase'
@@ -127,7 +129,8 @@ export default class Qwert extends Component {
   }
 
   done = ()=>{
-    console.log('done');
+    const {done} = this.props;
+    done && done();
   }
 
   keypress = (type, key)=> () => {

@@ -1,48 +1,40 @@
-import React, {Component} from 'react';
+import React, {Component, createElement} from 'react';
 import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
-import {PickerModal} from 'f7-modal';
+
 import Numpad from './numpad';
 import Enpad from './enpad';
+import Modal from './Modal';
+import styles from './style.less';
+
 
 export default class Keyboard extends Component {
 
   static propTypes = {
     inline: PropTypes.bool,
-    number: PropTypes.bool,
+    keypad: PropTypes.func.isRequired,
     getCancelIgnore: PropTypes.func
   }
 
   static defaultProps = {
-    number: true
+    closeButton: true,
+    closeText: '关闭'
   }
 
   state = {
-    visible: false,
     value: ''
   }
 
   input = null;
 
-  visible = ()=> {
-
-    this.setState({
-      visible: true
-    }, ()=>{
-      this.input.scrollIntoViewIfNeeded();
-    });
-  }
-
   getInput = (input)=>{
     const currentInput = document.getElementById(input);
 
     if(currentInput){
-      currentInput.readOnly = true;
-      document.activeElement.blur();
-      this.setState({ visible: true, value: currentInput.value });
       this.input = currentInput;
+      currentInput.readOnly = true;
+      this.setState({ value: currentInput.value });
     }else{
-      this.setState({ visible: false, value: '' });
       this.input = null;
     }
   }
@@ -51,7 +43,7 @@ export default class Keyboard extends Component {
   componentDidMount() {
     this.getInput(this.props.input);
     if(!this.props.inline){
-      document.addEventListener('click', this.cancelIgnore, false);
+      document.addEventListener('click', this.cancelIgnore);
     }
   }
 
@@ -59,17 +51,20 @@ export default class Keyboard extends Component {
     if(nextProps.input != this.props.input){
       this.getInput(nextProps.input)
     }
+    if(nextProps.visible !=  this.props.visible){
+      document.activeElement.blur();
+    }
   }
 
   componentWillUnmount() {
-    if(this.props.inline){
-      document.removeEventListener('click', this.cancelIgnore, false);
+    if(!this.props.inline){
+      document.removeEventListener('click', this.cancelIgnore);
     }
   }
 
   getElement = () => findDOMNode(this);
 
-  getCancelIgnore= ()=>this.input;
+  getCancelIgnore= ()=> this.input;
 
   cancelIgnore = (e)=>{
     const _target = e.target;
@@ -79,6 +74,7 @@ export default class Keyboard extends Component {
     if (!getCancelIgnore || !getCancelIgnore() || this.getElement().contains(_target))
       return false;
     const elements = getCancelIgnore();
+
     let result = false;
     if (Array.isArray(elements)) {
       elements.every((element, i) => {
@@ -95,8 +91,8 @@ export default class Keyboard extends Component {
       }
     }
 
-    if (!result) {
-      onCancel && onCancel();
+    if (!result && this.props.visible && onCancel) {
+      onCancel();
     }
 
     return result;
@@ -112,9 +108,14 @@ export default class Keyboard extends Component {
       dark,
       extraKey,
       random,
-      number,
+      keypad,
       maxLength,
       style,
+      visible,
+      onCancel,
+      title,
+      closeButton,
+      closeText,
       ...rest
     } = this.props;
 
@@ -126,40 +127,53 @@ export default class Keyboard extends Component {
       }
     }
 
-    const pad = number ? (
-      <Numpad
-        value={this.state.value}
-        onChange={setValue}
-        random={random}
-        maxLength={maxLength}
-        extraKey={extraKey}
-        dark={dark}
-      />
-    ) : (
-      <Enpad
-        value={this.state.value}
-        onChange={setValue}
-        maxLength={maxLength}
-        dark={dark}
-        />
+    let props = null;
+
+    if(keypad.uiName == 'Numpad'){
+      props = {
+        value: this.state.value,
+        onChange: setValue,
+        random,
+        maxLength,
+        extraKey,
+        dark
+      };
+    }else{
+      props = {
+        value: this.state.value,
+        onChange: setValue,
+        done: onCancel,
+        maxLength,
+        dark
+      };
+    }
+
+    const toolbar = (
+      <div className={`${styles['toolbar']} ${dark? styles['theme-dark'] : ''}`}>
+        <div className="right">
+          {closeButton && <span onClick={onCancel}>{closeText}</span>}
+        </div>
+        <div className="center">
+          {title}
+        </div>
+      </div>
     );
 
     if(inline){
       return (
-        <div style={style} {...rest}>{pad}</div>
+        <div style={style} {...rest}>
+          {toolbar}
+          {createElement(keypad, props)}
+        </div>
       )
     }
 
-    return (
-      <PickerModal
-        overlay={false}
-        visible={this.state.visible}
-        style={{position: 'fixed', height:'auto', ...style}}
-        toolbar={null}
-        {...rest}
-        >
-        { pad }
-      </PickerModal>
-    )
+    return  (
+      <Modal visible={visible}>
+        {toolbar}
+        {createElement(keypad, props)}
+      </Modal>
+    );
+
   }
 }
