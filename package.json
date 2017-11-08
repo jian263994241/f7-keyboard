@@ -4,7 +4,6 @@
   "description": "ios react keyboard",
   "main": "index.js",
   "dependencies": {
-    "f7-modal": "^0.2.5",
     "prop-types": "^15.6.0",
     "rc-mounter": "^1.1.5",
     "react": "^16.0.0",
