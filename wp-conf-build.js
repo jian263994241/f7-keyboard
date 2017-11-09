@@ -2,7 +2,7 @@ const path = require('path');
 
 module.exports = {
   entry: {
-    'index': './src/index.js'
+    'rc-keyboard': './src/index.js'
   },
 
   output:{
@@ -18,7 +18,7 @@ module.exports = {
       webpack.preset.babelRule()
     ]
   },
-  externals: ['react', 'react-dom', 'prop-types', 'rc-mounter', 'react-motion'],
+  externals: ['react', 'react-dom', 'react-motion', 'prop-types', 'rc-mounter'],
   plugins:[
     new webpack.CleanWebpackPlugin(['dist'])
   ]

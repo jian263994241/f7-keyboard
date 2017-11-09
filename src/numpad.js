@@ -1,6 +1,5 @@
 import React, {Component} from 'react';
 import PropTypes from 'prop-types';
-import classnames from 'classnames';
 import styles from './style.less';
 import {backspace, shift, shift2} from './svgicon';
 
@@ -120,21 +119,16 @@ export default class Numpad extends Component {
       ...rest
     } = this.props;
 
-    const Li = ({keys})=>{
+    const List = ({keys})=>{
+      const css = `${styles['iphone-keyboard']} ${styles['numpad']} ${dark? styles['theme-dark']: ''}`;
       const result = [];
       keys.forEach((k, i)=>{
         if(i%3 === 0){ result.push(<li key={`${i},${i + 3}`}>{keys.slice(i, i + 3)}</li>); }
       });
-      return result;
+      return <ul className={css}>{result}</ul>;
     }
 
-    const css = `${styles['iphone-keyboard']} ${styles['numpad']} ${dark? styles['theme-dark']: ''}`;
-
-    return (
-      <ul className={css}>
-        <Li keys={this.keys.map(this.renderKeys)}></Li>
-      </ul>
-    );
+    return <List keys={this.keys.map(this.renderKeys)}/>;
 
   }
 }
