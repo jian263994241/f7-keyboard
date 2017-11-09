@@ -33,3 +33,7 @@ import {Keyboard, Enpad, Numpad} from 'rc-keyboard';
 - `title` [any] toolbar 中间的部分
 - `closeButton` [bool] 是否显示关闭按钮
 - `closeText` [string] 定义关闭按钮文字
+
+## 预览图
+
+![](./img/键盘.png)
