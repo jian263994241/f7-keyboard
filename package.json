@@ -1,6 +1,6 @@
 {
   "name": "rc-keyboard",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "ios react keyboard",
   "main": "dist/rc-keyboard.js",
   "dependencies": {

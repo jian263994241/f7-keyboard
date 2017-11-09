@@ -58,7 +58,7 @@ class Example extends Component {
             onClick={()=>this.setState({keyboardid: 'b'})}/>
 
         <Keyboard
-          visible={this.state.keyboardid === 'a'}
+          visible
           dark={this.state.dark}
           input="numInput"
           keypad={Enpad}

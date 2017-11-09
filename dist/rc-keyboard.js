@@ -7,7 +7,7 @@
 		var a = typeof exports === 'object' ? factory(require("react"), require("prop-types"), require("react-dom"), require("rc-mounter")) : factory(root["react"], root["prop-types"], root["react-dom"], root["rc-mounter"]);
 		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
 	}
-})(this, function(__WEBPACK_EXTERNAL_MODULE_10__, __WEBPACK_EXTERNAL_MODULE_22__, __WEBPACK_EXTERNAL_MODULE_104__, __WEBPACK_EXTERNAL_MODULE_106__) {
+})(this, function(__WEBPACK_EXTERNAL_MODULE_10__, __WEBPACK_EXTERNAL_MODULE_22__, __WEBPACK_EXTERNAL_MODULE_105__, __WEBPACK_EXTERNAL_MODULE_106__) {
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
@@ -2223,7 +2223,7 @@ exports = module.exports = __webpack_require__(94)(false);
 
 
 // module
-exports.push([module.i, ".y4FWkE{width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;list-style:none;padding:0;margin:0;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;padding:5px 0;background-color:#d2d5db}.y4FWkE>li{padding:5px 0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.y4FWkE._3XzeTm button{width:33%;display:block;color:#000;font-size:25px;font-family:PingFang SC,Hiragino Sans GB,helvetica,arial,sans-serif;background-color:#fff;text-decoration:none;text-align:center;outline:none;border:0;border-bottom:1px solid #848688;border-radius:4px;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0 3px;padding:5px 2px}.y4FWkE._3XzeTm button>svg{vertical-align:middle}.y4FWkE._3XzeTm button._1Eb-8X{background-color:#acaeb4}.y4FWkE._3XzeTm button._2TEmXQ{visibility:hidden}.y4FWkE._3XzeTm button._2H2E6j{background-color:transparent;border-bottom:none}.y4FWkE._3XzeTm button.active-state,.y4FWkE._3XzeTm button:active{opacity:.6}.y4FWkE._3f04Qw button{width:8.6%;display:block;color:#000;font-size:22px;font-family:PingFang SC,Hiragino Sans GB,helvetica,arial,sans-serif;background-color:#fff;text-decoration:none;text-align:center;outline:none;border:0;border-bottom:1px solid #848688;border-radius:4px;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0 3px;padding:5px 2px}.y4FWkE._3f04Qw button>svg{vertical-align:middle}.y4FWkE._3f04Qw button._1Eb-8X{background-color:#acaeb4}.y4FWkE._3f04Qw button._2TEmXQ{visibility:hidden}.y4FWkE._3f04Qw button._2H2E6j{background-color:transparent;border-bottom:none}.y4FWkE._3f04Qw button.active-state,.y4FWkE._3f04Qw button:active{opacity:.6}.y4FWkE._3f04Qw button._1Eb-8X{font-size:16px}.y4FWkE._3f04Qw button._1XwxOa,.y4FWkE._3f04Qw button.okC7D0{width:10%;-webkit-box-flex:2;-ms-flex-positive:2;flex-grow:2}.y4FWkE._3f04Qw button._2OrqYW{width:25%}.y4FWkE._3f04Qw button._1OOfU_{-webkit-box-flex:2;-ms-flex-positive:2;flex-grow:2}.y4FWkE._3f04Qw button._2iwHGW{width:25%;color:#000;background-color:#acaeb4}.y4FWkE._3XzeTm._3ZfA4r{background-color:#6a7286}.y4FWkE._3XzeTm._3ZfA4r button{color:#000;background-color:#fff}.y4FWkE._3XzeTm._3ZfA4r button._1Eb-8X{background-color:transparent}.y4FWkE._3XzeTm._3ZfA4r button.okC7D0{border-bottom:none}.y4FWkE._3f04Qw._3ZfA4r{background-color:#6a7286}.y4FWkE._3f04Qw._3ZfA4r button{color:#000;background-color:#fff;border-bottom:1px solid #4e5564}.y4FWkE._3f04Qw._3ZfA4r button._1Eb-8X{background-color:#b4bdcc}.y4FWkE._3f04Qw._3ZfA4r button.okC7D0{border-bottom:none}.y4FWkE._3f04Qw._3ZfA4r button._1OOfU_{background-color:#fff}.y4FWkE._3f04Qw._3ZfA4r button._2iwHGW{color:#fff;background-color:#f54d4f}._21TDgt{position:fixed;left:0;bottom:0;width:100%;height:auto;padding:0;margin:0;z-index:999}._15AZ9d{background-color:#bcc4ca;font-size:12px;color:#007aff;text-align:center;padding:10px;font-size:16px;line-height:1;-webkit-box-sizing:border-box;box-sizing:border-box;white-space:nowrap;overflow:hidden;width:100%;position:relative}._15AZ9d:after{content:\"\";clear:both;display:block;height:0;overflow:hidden}._15AZ9d .center{position:absolute;display:block;width:100%;padding:0;margin:0 -10px;text-align:center;white-space:nowrap;-webkit-box-sizing:border-box;box-sizing:border-box;z-index:1}._15AZ9d .left{float:left;position:relative;z-index:2}._15AZ9d .right{float:right;position:relative;z-index:2}._15AZ9d._3ZfA4r{color:#fff;background-color:#5a6274}", ""]);
+exports.push([module.i, ".y4FWkE{width:100%;-webkit-box-sizing:border-box;box-sizing:border-box;list-style:none;padding:0;margin:0;overflow:hidden;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none;padding:5px 0;background-color:#d2d5db}.y4FWkE>li{padding:5px 0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center}.y4FWkE._3XzeTm button{width:33%;display:block;color:#000;font-size:25px;font-family:PingFang SC,Hiragino Sans GB,helvetica,arial,sans-serif;background-color:#fff;text-decoration:none;text-align:center;outline:none;border:0;border-bottom:1px solid #848688;border-radius:4px;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0 3px;padding:5px 2px}.y4FWkE._3XzeTm button>svg{vertical-align:middle}.y4FWkE._3XzeTm button._1Eb-8X{background-color:#acaeb4}.y4FWkE._3XzeTm button._2TEmXQ{visibility:hidden}.y4FWkE._3XzeTm button._2H2E6j{background-color:transparent;border-bottom:none}.y4FWkE._3XzeTm button.active-state,.y4FWkE._3XzeTm button:active{opacity:.6}.y4FWkE._3f04Qw button{width:8.6%;display:block;color:#000;font-size:22px;font-family:PingFang SC,Hiragino Sans GB,helvetica,arial,sans-serif;background-color:#fff;text-decoration:none;text-align:center;outline:none;border:0;border-bottom:1px solid #848688;border-radius:4px;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0 3px;padding:5px 2px}.y4FWkE._3f04Qw button>svg{vertical-align:middle}.y4FWkE._3f04Qw button._1Eb-8X{background-color:#acaeb4}.y4FWkE._3f04Qw button._2TEmXQ{visibility:hidden}.y4FWkE._3f04Qw button._2H2E6j{background-color:transparent;border-bottom:none}.y4FWkE._3f04Qw button.active-state,.y4FWkE._3f04Qw button:active{opacity:.6}.y4FWkE._3f04Qw button._1Eb-8X{font-size:16px}.y4FWkE._3f04Qw button._1XwxOa,.y4FWkE._3f04Qw button.okC7D0{width:10%;-webkit-box-flex:2;-ms-flex-positive:2;flex-grow:2}.y4FWkE._3f04Qw button._2OrqYW{width:25%}.y4FWkE._3f04Qw button._1OOfU_{-webkit-box-flex:2;-ms-flex-positive:2;flex-grow:2}.y4FWkE._3f04Qw button._2iwHGW{width:25%;color:#000;background-color:#acaeb4}.y4FWkE._3XzeTm._3ZfA4r{background-color:#6a7286}.y4FWkE._3XzeTm._3ZfA4r button{color:#000;background-color:#fff}.y4FWkE._3XzeTm._3ZfA4r button._1Eb-8X{background-color:transparent}.y4FWkE._3XzeTm._3ZfA4r button.okC7D0{border-bottom:none}.y4FWkE._3f04Qw._3ZfA4r{background-color:#6a7286}.y4FWkE._3f04Qw._3ZfA4r button{color:#000;background-color:#fff;border-bottom:1px solid #4e5564}.y4FWkE._3f04Qw._3ZfA4r button._1Eb-8X{background-color:#b4bdcc}.y4FWkE._3f04Qw._3ZfA4r button.okC7D0{border-bottom:none}.y4FWkE._3f04Qw._3ZfA4r button._1OOfU_{background-color:#fff}.y4FWkE._3f04Qw._3ZfA4r button._2iwHGW{color:#fff;background-color:#f54d4f}._21TDgt{position:fixed;left:0;bottom:0;width:100%;height:auto;padding:0;margin:0;z-index:6666}._15AZ9d{background-color:#bcc4ca;font-size:12px;color:#007aff;text-align:center;padding:10px;font-size:16px;line-height:1;-webkit-box-sizing:border-box;box-sizing:border-box;white-space:nowrap;overflow:hidden;width:100%;position:relative}._15AZ9d:after{content:\"\";clear:both;display:block;height:0;overflow:hidden}._15AZ9d .center{position:absolute;display:block;width:100%;padding:0;margin:0 -10px;text-align:center;white-space:nowrap;-webkit-box-sizing:border-box;box-sizing:border-box;z-index:1}._15AZ9d .left{float:left;position:relative;z-index:2}._15AZ9d .right{float:right;position:relative;z-index:2}._15AZ9d._3ZfA4r{color:#fff;background-color:#5a6274}", ""]);
 
 // exports
 exports.locals = {
@@ -3112,13 +3112,11 @@ var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = __webpack_require__(104);
-
 var _propTypes = __webpack_require__(22);
 
 var _propTypes2 = _interopRequireDefault(_propTypes);
 
-var _Modal = __webpack_require__(105);
+var _Modal = __webpack_require__(104);
 
 var _Modal2 = _interopRequireDefault(_Modal);
 
@@ -3155,14 +3153,14 @@ var Keyboard = (_temp2 = _class = function (_Component) {
         _this.input = null;
       }
     }, _this.getElement = function () {
-      return (0, _reactDom.findDOMNode)(_this);
+      return _this.refs.modal.getModal();
     }, _this.getCancelIgnore = function () {
       return _this.input;
     }, _this.cancelIgnore = function (e) {
       var _target = e.target;
       var getCancelIgnore = _this.getCancelIgnore;
       var onCancel = _this.props.onCancel;
-
+      _this.refs.modal.getModal();
       if (!getCancelIgnore || !getCancelIgnore() || _this.getElement().contains(_target)) return false;
       var elements = getCancelIgnore();
 
@@ -3287,18 +3285,9 @@ var Keyboard = (_temp2 = _class = function (_Component) {
         )
       );
 
-      if (inline) {
-        return _react2.default.createElement(
-          'div',
-          (0, _extends3.default)({ style: style }, rest),
-          toolbar,
-          (0, _react.createElement)(keypad, props)
-        );
-      }
-
       return _react2.default.createElement(
         _Modal2.default,
-        { visible: visible },
+        (0, _extends3.default)({ visible: visible, inline: inline }, rest, { ref: 'modal' }),
         toolbar,
         (0, _react.createElement)(keypad, props)
       );
@@ -3411,12 +3400,6 @@ module.exports = !$assign || __webpack_require__(7)(function () {
 
 /***/ }),
 /* 104 */
-/***/ (function(module, exports) {
-
-module.exports = __WEBPACK_EXTERNAL_MODULE_104__;
-
-/***/ }),
-/* 105 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -3450,6 +3433,8 @@ var _inherits3 = _interopRequireDefault(_inherits2);
 var _react = __webpack_require__(10);
 
 var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = __webpack_require__(105);
 
 var _rcMounter = __webpack_require__(106);
 
@@ -3492,9 +3477,12 @@ var Modal = function (_Component) {
       }
 
       return [{ key: 'a', style: { x: (0, _spring2.default)(100, config) } }];
+    }, _this.getModal = function () {
+      return (0, _reactDom.findDOMNode)(_this.refs.modal);
     }, _this.renderModal = function (interpolatedStyles) {
+
       return _react2.default.createElement(
-        _rcMounter2.default,
+        'div',
         null,
         interpolatedStyles.map(function (_ref2) {
           var key = _ref2.key,
@@ -3516,12 +3504,24 @@ var Modal = function (_Component) {
   (0, _createClass3.default)(Modal, [{
     key: 'render',
     value: function render() {
+      var _props = this.props,
+          className = _props.className,
+          style = _props.style;
+
       var _styles = this.getStyles();
+      var Element = this.props.inline ? 'div' : _rcMounter2.default;
 
       return _react2.default.createElement(
-        _TransitionMotion2.default,
-        { styles: _styles },
-        this.renderModal
+        Element,
+        {
+          className: className,
+          style: style
+        },
+        _react2.default.createElement(
+          _TransitionMotion2.default,
+          { styles: _styles, ref: 'modal' },
+          this.renderModal
+        )
       );
     }
   }]);
@@ -3529,6 +3529,12 @@ var Modal = function (_Component) {
 }(_react.Component);
 
 exports.default = Modal;
+
+/***/ }),
+/* 105 */
+/***/ (function(module, exports) {
+
+module.exports = __WEBPACK_EXTERNAL_MODULE_105__;
 
 /***/ }),
 /* 106 */

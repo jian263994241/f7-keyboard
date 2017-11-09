@@ -1,5 +1,4 @@
 import React, {Component, createElement} from 'react';
-import {findDOMNode} from 'react-dom';
 import PropTypes from 'prop-types';
 import Modal from './Modal';
 import styles from './style.less';
@@ -59,7 +58,7 @@ export default class Keyboard extends Component {
     }
   }
 
-  getElement = () => findDOMNode(this);
+  getElement = () => this.refs.modal.getModal();
 
   getCancelIgnore= ()=> this.input;
 
@@ -67,7 +66,7 @@ export default class Keyboard extends Component {
     const _target = e.target;
     const getCancelIgnore = this.getCancelIgnore;
     const onCancel = this.props.onCancel;
-
+    this.refs.modal.getModal()
     if (!getCancelIgnore || !getCancelIgnore() || this.getElement().contains(_target))
       return false;
     const elements = getCancelIgnore();
@@ -156,17 +155,8 @@ export default class Keyboard extends Component {
       </div>
     );
 
-    if(inline){
-      return (
-        <div style={style} {...rest}>
-          {toolbar}
-          {createElement(keypad, props)}
-        </div>
-      )
-    }
-
     return  (
-      <Modal visible={visible}>
+      <Modal visible={visible} inline={inline} {...rest} ref="modal">
         {toolbar}
         {createElement(keypad, props)}
       </Modal>
